@@ -119,7 +119,7 @@ const grafanaSecret = new k8s.core.v1.Secret("grafana-secret", {
     metadata: { name: "grafana-secret", namespace: "monitoring" },
     stringData: {
         "admin-user": "admin",
-        "admin-password": grafanaAdminPassword as unknown as string,
+        "admin-password": grafanaAdminPassword,
     },
 }, { dependsOn: monitoringNamespace });
 

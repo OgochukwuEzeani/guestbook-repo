@@ -65,8 +65,9 @@ minikube start
 pulumi up
 ```
 
-### 7. Start Minikube tunnel on a separate terminal
-# Minikube does not have a built-in load balancer. This command assigns an external IP to the Grafana service so it can be accessed from a browser.
+### 7. Start Minikube tunnel in a separate terminal
+
+Minikube does not have a built-in load balancer. This command assigns an external IP to the Grafana service. Leave this terminal running while you use Grafana.
 
 ```bash
 minikube tunnel
@@ -76,9 +77,16 @@ minikube tunnel
 
 ## Grafana Access
 
+Find the Grafana URL by running:
+
+```bash
+kubectl get svc grafana -n monitoring
+```
+
+Use the value in the `EXTERNAL-IP` column.
+
 | | |
 |---|---|
-| URL | `http://127.0.0.1` |
 | Username | `admin` |
 | Password | `sretask` |
 
@@ -147,7 +155,3 @@ You should see data points for each frontend pod.
 ```bash
 pulumi destroy
 ```
-```
-
-
-
